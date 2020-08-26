@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ingress-controller
+  namespace: ingress-controller
+  labels:
+    app: ingress-nginx
+spec:
+  loadBalancerIP: 35.178.163.89
+  type: LoadBalancer
+  selector:
+    app: nginx-ingress
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  - name: https
+    port: 443
+    targetPort: https

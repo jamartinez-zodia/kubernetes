@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Ingress
+metadata
+  name: ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: v1.lab-axa.local
+  http:
+    paths:
+    - backend:
+      serviceName: hello-kubernetes
+      servicePort: 80
+  - host: v2.lab-axa.local
+  http:
+    paths:
+    - backend:
+      serviceName: hello-kubernetes-custom
+      servicePort: 80
